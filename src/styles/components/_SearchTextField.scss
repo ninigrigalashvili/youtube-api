@@ -1,0 +1,37 @@
+//Add option
+.search-text-field {
+    display: flex;
+    position: relative;
+    // padding: $m-size;
+    // width: 300px;
+}
+
+.search-text-field__input {
+    background-image: linear-gradient(to right, #2c6dd4,#4c4dfd);
+    background-repeat: no-repeat;
+    border:none;
+    border-radius: 25px;
+    color: $off-white;
+    // flex-grow: 1;
+    // margin: 0 0 $s-size 0;
+    outline: none;
+    padding: $s-size;
+    width: 620px;
+    padding-left: 2.6rem;
+}
+
+
+.search-text-field__input::placeholder {
+    color: $off-white;
+}
+
+.search-text-field i {
+    color: white;
+    top: 16px;
+    position: absolute;
+    right: 18px;
+}
+
+// .search-text-field__input .MuiOutlinedInput-root{
+//     border-radius: 50px;
+//  }
