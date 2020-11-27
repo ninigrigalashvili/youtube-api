@@ -1,8 +1,11 @@
 @import './base/settings';
 @import './base/base';
 @import './components/content-container';
+@import './components/favourite-counter';
+@import './pages/favouratesPage';
 @import './components/loader';
 @import './components/SearchTextField';
 @import './components/video';
 @import './components/YoutubeHeader';
+@import './components/heart-icon';
 @import './pages/404';

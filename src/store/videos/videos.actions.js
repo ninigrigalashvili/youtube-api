@@ -1,17 +1,15 @@
 import { FetchVideos } from './videos.actionGenerator';
-import YoutubeAPIService from '../../services/youtubeAPI';
+import { fetchAllVideos,fetchTrendingVideos,fetchSearchedVideos } from '../../services/youtubeAPI';
 export const FetchAllVideos = () => {
     return async (dispatch) => {
-      let YoutubeAPIServiceInstance = new YoutubeAPIService();
-      const Videos = await YoutubeAPIServiceInstance.fetchAllVideos();
+      const Videos = await fetchAllVideos();
       dispatch(FetchVideos(Videos))
     }
 }
 
 export const FetchTrendingVideos = () => {
   return async(dispatch) => {
-    let YoutubeAPIServiceInstance = new YoutubeAPIService();
-    const Videos = await YoutubeAPIServiceInstance.fetchTrendingVideos();
+    const Videos = await fetchTrendingVideos();
     dispatch(FetchVideos(Videos))
   }
 }
@@ -20,8 +18,7 @@ export const FetchTrendingVideos = () => {
 
 export const FetchSearchedVideos = (keyword) => {
   return async(dispatch) => {
-    let YoutubeAPIServiceInstance = new YoutubeAPIService();
-    const Videos = await YoutubeAPIServiceInstance.fetchSearchedVideos(keyword);
+    const Videos = await fetchSearchedVideos(keyword);
     dispatch(FetchVideos(Videos))
   }
 }

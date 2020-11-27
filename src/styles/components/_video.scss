@@ -33,16 +33,16 @@
     width: 3px;
   }
 
-  .video-list a {
+  .video-list .video-container  {
 // background-color: green;
 margin-top: 5px;
-margin-left: 20px;
+margin-left: 15px;
 margin-bottom: 30px;
 cursor: pointer;
 
   }
 
-  .video-list a:nth-child(4n+1) {
+  .video-list .video-container:nth-child(4n+1) {
     // background-color: red;
     margin-left: 5px;
   }
@@ -88,4 +88,10 @@ cursor: pointer;
     height: 350px;
     // width: 100%;
     // height: 100%;
+  }
+
+
+  .video__container {
+    position: relative;
+    
   }

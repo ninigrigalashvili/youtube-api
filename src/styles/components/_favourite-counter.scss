@@ -1,0 +1,28 @@
+.favourite-counter__container {
+    display: flex;
+    margin-top: 10px;
+    flex-direction: row-reverse;
+    margin: 0 auto;
+    padding: 0 15.9rem;
+}
+
+.favourite-counter__container .counter {
+    position: absolute;
+    color: $off-white;
+    top: 16px;
+    left: 26px;
+}
+
+.favourite-counter-image {
+    position: relative;
+    cursor: pointer;
+}
+
+.favourite-counter-image:hover {
+    opacity: 0.7;
+}
+
+.favourite-counter-image img {
+    width: 60px;
+    height: 60px;
+}

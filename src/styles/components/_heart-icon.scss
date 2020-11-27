@@ -1,0 +1,18 @@
+.heart-icon-container {
+    position: absolute;
+    right: 20px;
+    top: 25px;
+    cursor: pointer;
+    z-index: 1000;
+}
+
+
+.heart-icon-container .heart-icon  .far.fa-heart{
+    color: $off-white;
+    }
+    
+
+.heart-icon-container .heart-icon .fas.fa-heart{
+color: $red;
+    }
+
