@@ -1,4 +1,4 @@
-import { FetchVideos } from './videos.actionGenerator';
+import { FetchVideos, fetchtrendingvideos , fetchSearchedvideos, fetchSearchedTrendingVideos} from './videos.actionGenerator';
 import { fetchAllVideos,fetchTrendingVideos,fetchSearchedVideos } from '../../services/youtubeAPI';
 export const FetchAllVideos = () => {
     return async (dispatch) => {
@@ -10,7 +10,7 @@ export const FetchAllVideos = () => {
 export const FetchTrendingVideos = () => {
   return async(dispatch) => {
     const Videos = await fetchTrendingVideos();
-    dispatch(FetchVideos(Videos))
+    dispatch(fetchtrendingvideos(Videos))
   }
 }
 
@@ -19,8 +19,19 @@ export const FetchTrendingVideos = () => {
 export const FetchSearchedVideos = (keyword) => {
   return async(dispatch) => {
     const Videos = await fetchSearchedVideos(keyword);
-    dispatch(FetchVideos(Videos))
+    dispatch(fetchSearchedvideos(Videos))
   }
 }
+
+
+export const FetchSearchedTrendingVideos = (keyword) => {
+  return async(dispatch) => {
+    const Videos = await fetchSearchedVideos(keyword);
+    dispatch(fetchSearchedTrendingVideos(Videos))
+  }
+}
+
+
+
 
 

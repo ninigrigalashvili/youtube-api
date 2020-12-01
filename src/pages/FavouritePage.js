@@ -1,23 +1,29 @@
-import React  from 'react';
+import React, { useEffect }  from 'react';
 import { connect } from 'react-redux';
-import { FetchSearchedVideos } from '../store/videos/videos.actions';
+import { FetchAllVideos, FetchSearchedVideos } from '../store/videos/videos.actions';
 import YoutubeHeader from '../components/YoutubeHeader';
 import VideoList from '../components/VideoList';
 import FavouriteCounter from '../components/FavouriteCounter';
 import {  AddToFavourites, RemoveFromFavourites } from '../store/favourites/favourites.actions';
-import { selectFavouriteVideos } from '../store/favourites/favourites.selector';
+import { selectFavouriteVideos, selectVideosFromFavourites } from '../store/favourites/favourites.selector';
 
 
 const FavouritePage = (props) => {
-    const { Videos, FavouriteVideos } = props;
+    const { Videos, FavouriteVideos, selectVideosFromFavourites } = props;
+    // let result = FavouriteVideos &&Videos.filter(o1 => FavouriteVideos.some(o2 => o1.id === o2));
+    // console.log("result", result)
     console.log("Favourites", FavouriteVideos)
     console.log("VIdeos", Videos)
-    let result = FavouriteVideos &&Videos.filter(o1 => FavouriteVideos.some(o2 => o1.id === o2));
-    console.log("result", result)
+  
 
 
     const onSearch = async keyword => {
+       if(keyword) {
+           console.log("ggg", keyword)
         await props.FetchSearchedVideos(keyword);
+       } else {
+        await props.FetchAllVideos();
+       }
         console.log("videos", Videos)
 
     }
@@ -32,6 +38,10 @@ const FavouritePage = (props) => {
               props.AddToFavourites(videoId)
       }
 
+    useEffect(() => {
+     console.log("ccc", selectVideosFromFavourites)
+    }, [])
+
   
 
     return (
@@ -39,10 +49,10 @@ const FavouritePage = (props) => {
         <YoutubeHeader onSearch={onSearch}/>
         <FavouriteCounter  count={props.FavouriteVideos.length}/>
         {
-            result && result.length ? (
+            selectVideosFromFavourites && selectVideosFromFavourites.length ? (
                 <div className="content-container__videos">
                   <VideoList
-                   data={result}
+                   data={selectVideosFromFavourites}
                    addToFavourite={addToFavourite}
                    FavouriteVideos={FavouriteVideos}
                     /> 
@@ -57,10 +67,12 @@ const FavouritePage = (props) => {
 
 const mapStateToProps = (state) => ({
     Videos: state.VideosReducer.Videos,
-    FavouriteVideos: selectFavouriteVideos(state)
+    FavouriteVideos: selectFavouriteVideos(state),
+    selectVideosFromFavourites: selectVideosFromFavourites(state)
 })
 
 const mapDispatchToProps = (dispatch) => ({
+    FetchAllVideos: () => dispatch(FetchAllVideos()),
     FetchSearchedVideos: () => dispatch(FetchSearchedVideos()),
     AddToFavourites: (id) => dispatch(AddToFavourites(id)),
     RemoveFromFavourites: (id) => dispatch(RemoveFromFavourites(id)),

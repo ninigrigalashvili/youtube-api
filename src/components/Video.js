@@ -43,7 +43,6 @@ const Video = ({ data, addToFavourite,  FavouriteVideos }) => {
 
     return (
       <div className="video__container" key={index}>
-     
         <div className="heart-icon-container" onClick={() => addToFavourite(id)}>
            <div className="heart-icon">
           {

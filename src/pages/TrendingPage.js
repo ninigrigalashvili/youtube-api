@@ -1,22 +1,25 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import Loading from '../components/Loading';
 import VideoList from '../components/VideoList';
 import YoutubeHeader from '../components/YoutubeHeader';
 import { connect } from 'react-redux';
-import { FetchTrendingVideos, FetchSearchedVideos } from '../store/videos/videos.actions';
-import { selectVideos } from '../store/videos/videos.selector';
+import { FetchTrendingVideos, FetchSearchedTrendingVideos } from '../store/videos/videos.actions';
+import { selectTrendingVideos,selectSearchedTrendingVideos } from '../store/videos/videos.selector';
 import { selectFavouriteVideos } from '../store/favourites/favourites.selector';
 import {  AddToFavourites, RemoveFromFavourites } from '../store/favourites/favourites.actions';
 import FavouriteCounter from '../components/FavouriteCounter';
 
 const TrendingPage = (props) => {
-    const { Videos, FavouriteVideos } = props;
+    const {  FavouriteVideos, TrendingVideos, SearchedTrending } = props;
+    const [truthy, setTruthy] = useState(false);
 
     const onSearch = async keyword => {
         console.log("keyword", keyword)
         if (keyword) {
-             await props.FetchSearchedVideos(keyword)
+            setTruthy(true)
+             await props.FetchSearchedTrendingVideos(keyword)
         } else {
+            setTruthy(false)
             await props.FetchTrendingVideos();
         }
     }
@@ -39,9 +42,9 @@ const TrendingPage = (props) => {
             <FavouriteCounter  count={FavouriteVideos.length}/>
             <div className="content-container__videos">
             {
-                Videos && Videos.length ? (
+                TrendingVideos && TrendingVideos.length ? (
                     <VideoList
-                     data={Videos}
+                     data={truthy ? SearchedTrending : TrendingVideos}
                      addToFavourite={addToFavourite}
                      FavouriteVideos={FavouriteVideos}
                      />
@@ -57,13 +60,14 @@ const TrendingPage = (props) => {
 
 
 const mapStateToProps = (state) => ({
-    Videos: selectVideos(state),
-    FavouriteVideos: selectFavouriteVideos(state)
+    FavouriteVideos: selectFavouriteVideos(state),
+    TrendingVideos: selectTrendingVideos(state),
+    SearchedTrending: selectSearchedTrendingVideos(state)
 })
 
 const mapDispatchToProps = dispatch => ({
     FetchTrendingVideos: () => dispatch(FetchTrendingVideos()),
-    FetchSearchedVideos: (keyword) => dispatch(FetchSearchedVideos(keyword)),
+    FetchSearchedTrendingVideos: (keyword) => dispatch(FetchSearchedTrendingVideos(keyword)),
     AddToFavourites: (id) => dispatch(AddToFavourites(id)),
     RemoveFromFavourites: (id) => dispatch(RemoveFromFavourites(id))
 })
