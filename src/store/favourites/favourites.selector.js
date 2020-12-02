@@ -1,5 +1,4 @@
 export const selectFavouriteVideos = state  => {
-   console.log("stateeee", state.FavouritesReducer)
         return state.FavouritesReducer
     //array of favourite video ids
 } 
@@ -15,7 +14,13 @@ export const selectVideosFromFavourites = state => {
 
     searchedVideos && searchedVideos.forEach(video =>  {
         if(typeof video.id === 'object') {
-            console.log("zzz", video)
+            return video.id = video.id.videoId
+        }
+        return video
+    })
+
+    searchedTrendingVideos && searchedTrendingVideos.forEach(video =>  {
+        if(typeof video.id === 'object') {
             return video.id = video.id.videoId
         }
         return video
@@ -41,7 +46,7 @@ export const selectVideosFromFavourites = state => {
     allVideos= allVideos.filter( (ele, ind) => ind === allVideos.findIndex( elem => elem.videoId === ele.videoId && elem.id === ele.id))
     
     const favouriteVideos = state.FavouritesReducer
-    console.log("mmm", favouriteVideos)
+
     //display those videos that match to favourites id
     return allVideos && allVideos.filter(o1 => favouriteVideos.some(o2 => o1.id === o2));
 }

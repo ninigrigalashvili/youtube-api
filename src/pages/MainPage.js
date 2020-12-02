@@ -43,7 +43,6 @@ const MainPage = (props) => {
         props.RemoveFromFavourites(videoId) :
         props.AddToFavourites(videoId)
     }
-        console.log("main pagesheeee", videoId, FavouriteVideos)
         // setSelectedFavouriteVideo({...selectedFavouriteVideo, [videoId]: !selectedFavouriteVideo[videoId]})
         // if(!selectedFavouriteVideo[videoId] === true) {
         //     setCount(count + 1)

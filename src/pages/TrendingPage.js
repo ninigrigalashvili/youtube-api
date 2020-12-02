@@ -25,11 +25,20 @@ const TrendingPage = (props) => {
     }
 
     const addToFavourite = async(videoId) => {
+        if (typeof videoId === 'object') {
+            !FavouriteVideos.length ?
+                props.AddToFavourites(videoId.videoId) :
+                FavouriteVideos.includes(videoId.videoId) ?
+                    props.RemoveFromFavourites(videoId.videoId) :
+                    props.AddToFavourites(videoId.videoId)
+        } else {
+
         !FavouriteVideos.length ?
-         props.AddToFavourites(videoId) :
+        props.AddToFavourites(videoId) :
         FavouriteVideos.includes(videoId) ?
-            props.RemoveFromFavourites(videoId) :
-              props.AddToFavourites(videoId)
+        props.RemoveFromFavourites(videoId) :
+        props.AddToFavourites(videoId)
+        }
      
       }
 

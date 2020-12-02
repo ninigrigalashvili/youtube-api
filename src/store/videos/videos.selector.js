@@ -10,7 +10,6 @@ export const selectTrendingVideos  = state => {
 
 export const selectSearchedVideos = state  => {
     let searchedVideos = state.VideosReducer.SearchedVideos;
-    // searchedVideos && searchedVideos.forEach(video => video.id = video.id.videoId);
     return searchedVideos
 } 
 
