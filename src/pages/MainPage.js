@@ -29,11 +29,21 @@ const MainPage = (props) => {
 
 
     const addToFavourite = async (videoId) => {
+                if (typeof videoId === 'object') {
             !FavouriteVideos.length ?
-                props.AddToFavourites(videoId) :
-                FavouriteVideos.includes(videoId) ?
-                    props.RemoveFromFavourites(videoId) :
-                    props.AddToFavourites(videoId)
+                props.AddToFavourites(videoId.videoId) :
+                FavouriteVideos.includes(videoId.videoId) ?
+                    props.RemoveFromFavourites(videoId.videoId) :
+                    props.AddToFavourites(videoId.videoId)
+        } else {
+
+        !FavouriteVideos.length ?
+        props.AddToFavourites(videoId) :
+        FavouriteVideos.includes(videoId) ?
+        props.RemoveFromFavourites(videoId) :
+        props.AddToFavourites(videoId)
+    }
+        console.log("main pagesheeee", videoId, FavouriteVideos)
         // setSelectedFavouriteVideo({...selectedFavouriteVideo, [videoId]: !selectedFavouriteVideo[videoId]})
         // if(!selectedFavouriteVideo[videoId] === true) {
         //     setCount(count + 1)

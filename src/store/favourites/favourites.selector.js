@@ -13,8 +13,14 @@ export const selectVideosFromFavourites = state => {
     let searchedTrendingVideos = state.VideosReducer.SearchedTrendingVideos;
 
 
-   
-    // searchedVideos && searchedVideos.forEach(video => video.id = video.id.videoId);
+    searchedVideos && searchedVideos.forEach(video =>  {
+        if(typeof video.id === 'object') {
+            console.log("zzz", video)
+            return video.id = video.id.videoId
+        }
+        return video
+    })
+        
 
     let videosAndSearched = videos && searchedVideos && videos.concat(searchedVideos)
     let trendingVideosAndSearched = trendingVideos && searchedTrendingVideos && trendingVideos.concat(searchedTrendingVideos)
@@ -34,7 +40,8 @@ export const selectVideosFromFavourites = state => {
     //remove duplicates 
     allVideos= allVideos.filter( (ele, ind) => ind === allVideos.findIndex( elem => elem.videoId === ele.videoId && elem.id === ele.id))
     
-    const favouriteVideos = state.FavouritesReducer;
+    const favouriteVideos = state.FavouritesReducer
+    console.log("mmm", favouriteVideos)
     //display those videos that match to favourites id
     return allVideos && allVideos.filter(o1 => favouriteVideos.some(o2 => o1.id === o2));
 }

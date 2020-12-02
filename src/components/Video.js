@@ -46,7 +46,7 @@ const Video = ({ data, addToFavourite,  FavouriteVideos }) => {
         <div className="heart-icon-container" onClick={() => addToFavourite(id)}>
            <div className="heart-icon">
           {
-              <i className={`${FavouriteVideos.includes(id)
+              <i className={`${FavouriteVideos.includes(typeof id === 'object' ? id.videoId : id)
                 ? 'fas' : 'far'} fa-heart`}></i> 
           }
           </div>
