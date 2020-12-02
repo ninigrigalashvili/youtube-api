@@ -9,7 +9,7 @@ import storage from 'redux-persist/lib/storage';
 const favouritesPersistConfig = {
     key: 'root',
     storage: storage,
-    whitelist: ['FavouritesReducer'] // only VideosReducer will be persisted
+    whitelist: ['FavouritesReducer', 'VideosReducer'] 
 };
 
 const rootReducer = combineReducers({
