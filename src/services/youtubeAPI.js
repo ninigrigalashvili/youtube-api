@@ -43,5 +43,18 @@ import {api_key as key } from '../config/youtube.js';
               console.log('/Trendingvideos------>', res)
               return res.data.items;
           })
-      }
+      };
+
+      export const fetchVideoComments = (videoId) => {
+        return ApplicationApi.get('/commentThreads', {
+            params: {
+                part: 'snippet, replies',
+                videoId,
+                key
+            }
+        }).then((res) => {
+            console.log('/videoComments---->', res.data.items)
+            return res.data.items;
+        })  
+    };
 

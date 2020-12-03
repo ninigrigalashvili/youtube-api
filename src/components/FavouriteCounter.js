@@ -8,7 +8,7 @@ const FavouriteCounter = ({ count }) => {
             <NavLink to='/favourites'>
                 <div className="favourite-counter-image">
                     <div className="counter">{count ? count : '0'}</div>
-                    <img src={redHeartSquare} />
+                    <img src={redHeartSquare} alt=""/>
                 </div>
             </NavLink>
         </div>

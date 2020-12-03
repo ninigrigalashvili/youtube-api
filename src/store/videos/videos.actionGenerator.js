@@ -30,3 +30,11 @@ export function fetchSearchedTrendingVideos(videos) {
         payload: videos
     }
 }
+
+
+export function fetchVideocomments(comments) {
+    return {
+        type: types.FETCH_VIDEO_COMMENTS,
+        payload: comments
+    }
+}

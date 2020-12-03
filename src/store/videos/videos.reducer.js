@@ -24,6 +24,11 @@ export default (state = videosReducerDefaultState, action) => {
                 ...state,
                 SearchedTrendingVideos: action.payload
             }
+        case types.FETCH_VIDEO_COMMENTS:
+            return {
+                ...state,
+                Comments: action.payload
+            }
         default:
             return state;
     }

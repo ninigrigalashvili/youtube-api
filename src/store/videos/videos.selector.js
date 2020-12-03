@@ -18,3 +18,7 @@ export const selectSearchedTrendingVideos = state  => {
     let searchedTrendingVideos = state.VideosReducer.SearchedTrendingVideos;
     return searchedTrendingVideos;
 } 
+
+export const selectComments = state => {
+    return state.VideosReducer.Comments
+}

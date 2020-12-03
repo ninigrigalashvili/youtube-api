@@ -1,0 +1,48 @@
+.video-comments {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 40px;
+}
+
+.video-comments__comment {
+    width: 65%;
+    display: flex;
+    margin-top: 10px;
+
+    .author-img__container {
+
+        .author-img {
+            border-radius: 50%;
+        }
+      }
+    
+    
+
+    .meta-info__container {
+        margin-left: 15px;
+
+      .comment-author {
+        span:first-child {
+            font-weight: bold;
+        }
+        span:nth-child(2) {
+            margin-left: 5px;
+            color: $grey;
+        }
+      } 
+
+      .likes-container {
+          color: $grey;
+          span,
+          i:nth-child(2)
+          {
+            margin-left: 10px;
+        }
+      }
+    }
+}
+
+
+
