@@ -1,14 +1,7 @@
-import React, { useEffect } from "react";
+import React from "react";
 import VideoComment from "./VideoComment";
-import VideoConnect from './VideoComment';
  
 const Videoplayer = ({ videoId, comments }) => {
-
-  useEffect(async () => {
-    console.log("comments", comments)
-
-  }, [])
-
 
 
   return (
@@ -22,10 +15,11 @@ const Videoplayer = ({ videoId, comments }) => {
       </div>
       <div className="video-comments">
         {
-          comments && comments.length && comments.map(comment => {
+          comments && comments.length && comments.map((comment, index) => {
             const { textOriginal, authorDisplayName, authorProfileImageUrl,likeCount, updatedAt, publishedAt } = comment.snippet.topLevelComment.snippet;
             return (
                 <VideoComment
+                key={index}
                  text={textOriginal}
                  author={authorDisplayName}
                  authorProfileImageUrl={authorProfileImageUrl}

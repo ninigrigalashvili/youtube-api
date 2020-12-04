@@ -10,6 +10,7 @@ export const selectVideosFromFavourites = state => {
     let searchedVideos = state.VideosReducer.SearchedVideos;
     let trendingVideos = state.VideosReducer.TrendingVideos;
     let searchedTrendingVideos = state.VideosReducer.SearchedTrendingVideos;
+    let recommendedVideos = state.VideosReducer.RecommendedVideos;
 
 
     searchedVideos && searchedVideos.forEach(video =>  {
@@ -31,6 +32,7 @@ export const selectVideosFromFavourites = state => {
     let trendingVideosAndSearched = trendingVideos && searchedTrendingVideos && trendingVideos.concat(searchedTrendingVideos)
 
     let allVideos =  
+    videosAndSearched && trendingVideosAndSearched && recommendedVideos ? videosAndSearched.concat(trendingVideosAndSearched).concat(recommendedVideos) : 
     videosAndSearched && trendingVideosAndSearched ? videosAndSearched.concat(trendingVideosAndSearched) : 
     videos && trendingVideosAndSearched ? videos.concat(trendingVideosAndSearched) : 
     videosAndSearched && trendingVideos ?  videosAndSearched.concat(trendingVideos) : 
@@ -38,9 +40,20 @@ export const selectVideosFromFavourites = state => {
     videosAndSearched ? videosAndSearched :
     trendingVideosAndSearched ? trendingVideosAndSearched :  
     videos && trendingVideos ? videos.concat(trendingVideos) : 
+    videosAndSearched && recommendedVideos && trendingVideos ? videosAndSearched.concat(recommendedVideos).concat(trendingVideos) :
+    trendingVideosAndSearched && recommendedVideos && videos ? trendingVideosAndSearched.concat(recommendedVideos).concat(videos) : 
+    videosAndSearched && recommendedVideos && searchedTrendingVideos ? videosAndSearched.concat(recommendedVideos).concat(searchedTrendingVideos) : 
+    trendingVideosAndSearched && recommendedVideos && searchedVideos ? trendingVideosAndSearched.concat(recommendedVideos).concat(searchedVideos) : 
+    videosAndSearched && recommendedVideos ? videosAndSearched.concat(recommendedVideos) :
+    trendingVideosAndSearched && recommendedVideos ? trendingVideosAndSearched.concat(recommendedVideos) : 
+    videos && recommendedVideos ? videos.concat(recommendedVideos) : 
+    trendingVideos && recommendedVideos ? trendingVideos.concat(recommendedVideos) :
+    searchedVideos && recommendedVideos ? searchedVideos.concat(recommendedVideos) : 
+    searchedTrendingVideos && recommendedVideos ? searchedTrendingVideos.concat(recommendedVideos) : 
     videos ? videos : 
     searchedVideos ? searchedVideos :
     trendingVideos ? trendingVideos :
+    recommendedVideos ? recommendedVideos: 
        [];
     //remove duplicates 
     allVideos= allVideos.filter( (ele, ind) => ind === allVideos.findIndex( elem => elem.videoId === ele.videoId && elem.id === ele.id))

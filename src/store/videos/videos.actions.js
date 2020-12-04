@@ -1,5 +1,5 @@
-import { FetchVideos, fetchtrendingvideos , fetchSearchedvideos, fetchSearchedTrendingVideos, fetchVideocomments} from './videos.actionGenerator';
-import { fetchAllVideos,fetchTrendingVideos,fetchSearchedVideos, fetchVideoComments } from '../../services/youtubeAPI';
+import { FetchVideos, fetchtrendingvideos , fetchSearchedvideos, fetchSearchedTrendingVideos, fetchVideocomments, fetchVideoRecommendations} from './videos.actionGenerator';
+import { fetchAllVideos,fetchTrendingVideos,fetchSearchedVideos, fetchVideoComments, fetchRecommendedVideos } from '../../services/youtubeAPI';
 export const FetchAllVideos = () => {
     return async (dispatch) => {
       const Videos = await fetchAllVideos();
@@ -32,13 +32,19 @@ export const FetchSearchedTrendingVideos = (keyword) => {
 }
 
 export const FetchVideoComments = (id) => {
-  console.log("cccccccccccccccccccccccccccccccccc")
   return async(dispatch) => {
     const Comments = await fetchVideoComments(id)
     dispatch(fetchVideocomments(Comments))
   }
 }
 
+
+export const FetchRecommendedVideos = () => {
+  return async(dispatch) => {
+    const Videos = await fetchRecommendedVideos();
+    dispatch(fetchVideoRecommendations(Videos))
+  }
+}
 
 
 

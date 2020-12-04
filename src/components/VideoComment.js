@@ -14,9 +14,9 @@ const VideoComment = ({ text, author, authorProfileImageUrl, likeCount, publishe
                     </div>
                     <div className="comment-text">{text}</div>
                     <div className="likes-container">
-                        <i class="far fa-thumbs-up"></i>
+                        <i className="far fa-thumbs-up"></i>
                         <span>{likeCount !== 0 ? likeCount : ''}</span>
-                        <i class="far fa-thumbs-down"></i>
+                        <i className="far fa-thumbs-down"></i>
                         <span>REPLY</span>
                     </div>
                 </div>

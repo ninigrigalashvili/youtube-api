@@ -58,3 +58,17 @@ import {api_key as key } from '../config/youtube.js';
         })  
     };
 
+    export const fetchRecommendedVideos = () => {
+        return ApplicationApi.get('/activities', {
+            params: {
+                part: 'snippet,contentDetails',
+                key,
+                channelId: 'UC_x5XG1OV2P6uZZ5FSM9Ttw',
+                maxResults: 8,
+                uploadType: 'video'
+            }
+        }).then((res) => {
+            console.log("/activities------>", res.data.items)
+            return res.data.items;
+        })
+    }

@@ -38,3 +38,11 @@ export function fetchVideocomments(comments) {
         payload: comments
     }
 }
+
+
+export function fetchVideoRecommendations(videos) {
+    return {
+        type: types.FETCH_VIDEO_RECOMMENDATIONS,
+        payload: videos
+    }
+}

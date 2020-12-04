@@ -29,6 +29,11 @@ export default (state = videosReducerDefaultState, action) => {
                 ...state,
                 Comments: action.payload
             }
+        case types.FETCH_VIDEO_RECOMMENDATIONS:
+            return {
+                ...state,
+                RecommendedVideos: action.payload
+            }
         default:
             return state;
     }
