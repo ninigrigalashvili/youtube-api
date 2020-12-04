@@ -13,8 +13,7 @@ const SingleVideoPage = (props) => {
     }, [])
 
     useEffect(async () => {
-         const response =  await  props.FetchVideoComments(videoId)
-    console.log("zzzzz",response)
+    await  props.FetchVideoComments(videoId)
     }, [])
 
  

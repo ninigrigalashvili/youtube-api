@@ -23,7 +23,7 @@ const Videoplayer = ({ videoId, comments }) => {
       <div className="video-comments">
         {
           comments && comments.length && comments.map(comment => {
-            const { textOriginal, authorDisplayName, authorProfileImageUrl,likeCount, updatedAt } = comment.snippet.topLevelComment.snippet;
+            const { textOriginal, authorDisplayName, authorProfileImageUrl,likeCount, updatedAt, publishedAt } = comment.snippet.topLevelComment.snippet;
             return (
                 <VideoComment
                  text={textOriginal}
@@ -31,6 +31,7 @@ const Videoplayer = ({ videoId, comments }) => {
                  authorProfileImageUrl={authorProfileImageUrl}
                  likeCount={likeCount}
                  updatedAt={updatedAt}
+                 publishedAt={publishedAt}
                  />
             )
 

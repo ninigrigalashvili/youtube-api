@@ -1,7 +1,7 @@
 import React from 'react';
 import moment from 'moment';
 
-const VideoComment = ({ text, author, authorProfileImageUrl, likeCount, updatedAt }) => {
+const VideoComment = ({ text, author, authorProfileImageUrl, likeCount, publishedAt }) => {
     return (
             <div className="video-comments__comment">
                 <div className="author-img__container">
@@ -10,7 +10,7 @@ const VideoComment = ({ text, author, authorProfileImageUrl, likeCount, updatedA
                 <div className="meta-info__container">
                     <div className="comment-author">
                         <span>{author}</span>
-                        <span>{moment(updatedAt).fromNow()}</span>
+                        <span>{moment(publishedAt).fromNow()}</span>
                     </div>
                     <div className="comment-text">{text}</div>
                     <div className="likes-container">
